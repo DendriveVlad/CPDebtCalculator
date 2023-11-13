@@ -148,7 +148,7 @@ function confirm_member() {
         edit_doc = document.getElementById("results").getElementsByClassName("data").item(edit);
         edit_doc.getElementsByClassName("member-name").item(0).innerHTML = name;
         edit_doc.getElementsByClassName("paid").item(0).innerHTML = parseInt(paid);
-        if (excepts !== -1) edit_doc.getElementsByClassName("exceptions").item(0).innerHTML = javaConnector.getMemberExcepts();
+        if (excepts !== -1) edit_doc.getElementsByClassName("exceptions").item(0).innerHTML = javaConnector.getMemberExcepts(edit);
         else edit_doc.getElementsByClassName("exceptions").item(0).innerHTML = ".";
         edit = -1;
         add_product();
@@ -161,7 +161,7 @@ function confirm_member() {
             "<div class=\"data\" onmouseup='remove_object(this)' ondblclick='add_member(this)'>" +
             "    <a class=\"member-name\">" + name + "</a>" +
             "    <a class=\"paid\">" + parseInt(paid) + "</a>" +
-            "    <a class=\"exceptions\">" + javaConnector.getMemberExcepts() + "</a>" +
+            "    <a class=\"exceptions\">" + javaConnector.getMemberExcepts(edit) + "</a>" +
             "</div>";
     } else
         document.getElementById("results").innerHTML +=

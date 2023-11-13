@@ -139,9 +139,10 @@ public class JavaConnector {
         return String.valueOf(result);
     }
 
-    public String getMemberExcepts() {
+    public String getMemberExcepts(int memberIndex) {
+        if (memberIndex < 0) memberIndex = this.mainClass.party.getJustMembers().size() - 1;
         String result = "";
-        for (Product p : this.mainClass.party.getJustMembers().get(this.mainClass.party.getJustMembers().size() - 1).getExcepts()) result += p.getProduct()[0] + ", ";
+        for (Product p : this.mainClass.party.getJustMembers().get(memberIndex).getExcepts()) result += p.getProduct()[0] + ", ";
         if (result.isEmpty()) return ".";
         return result.substring(0, result.length() - 2) + ".";
     }
