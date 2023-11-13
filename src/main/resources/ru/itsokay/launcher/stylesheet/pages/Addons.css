@@ -1,0 +1,48 @@
+.names {
+    position: absolute;
+    top: 15px;
+    left: 85px;
+    width: 50%;
+    height: calc(100% - 60px);
+}
+
+.name {
+    position: absolute;
+    /*height: 100px;*/
+    width: 55.5%;
+    left: 15px;
+}
+
+/*.name:hover {*/
+/*    color: #d3d4ae;*/
+/*    block-size: auto;*/
+/*    overflow: visible;*/
+/*}*/
+
+.costs {
+    position: absolute;
+    top: 15px;
+    left: calc(85px + 50%);
+    width: 20%;
+    height: calc(100% - 60px);
+}
+
+.cost {
+    position: relative;
+    width: 21.5%;
+    left: calc(85px + 50%);
+}
+
+/*.numbers {*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    left: calc(85px + 70%);*/
+/*    width: calc(30% - 150px);*/
+/*    height: calc(100% - 60px);*/
+/*}*/
+
+.number {
+    position: absolute;
+    width: 16%;
+    left: calc(115px + 70%);
+}

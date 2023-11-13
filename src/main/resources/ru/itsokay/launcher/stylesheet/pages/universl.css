@@ -1,0 +1,219 @@
+.data {
+    cursor: default;
+    position: relative;
+    /*background: #7be85d;*/
+    color: #9B9C7A;
+    font-family: "Segoe UI Semibold", serif;
+    display: block;
+    min-height: 25px;
+    /*height: auto;*/
+    /*max-height: 250px;*/
+    overflow: auto;
+    word-wrap: break-word;
+    transition: color 200ms, block-size 200ms, overflow 200ms;
+}
+
+.title-data {
+    width: calc(100% - 150px);
+    top: 25px;
+    left: 85px;
+}
+
+.data:hover{
+    color: #d3d4ae;
+}
+
+.data::-webkit-scrollbar {
+    width: 2px;
+}
+
+.split {
+    top: 15px;
+    right: 0;
+    width: 2px;
+    height: calc(100% - 60px);
+    background: #030303;
+    position: absolute;
+}
+
+#results::-webkit-scrollbar-thumb {
+    background: #9B9C7A;
+}
+
+#results {
+    position: relative;
+    top: 25px;
+    left: 85px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    max-height: calc(100vh - 150px);
+    width: calc(100% - 150px);
+    border-radius: 15px;
+}
+
+#results::-webkit-scrollbar {
+    width: 3px;
+}
+
+#results::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+}
+
+#results:hover::-webkit-scrollbar-thumb {
+    background: #9B9C7A;
+}
+
+.titleSplit {
+    background: #030303;
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    height: 2px;
+    width: calc(100% - 150px);
+}
+
+.addButton {
+    color: #A5A5A5;
+    font-family: "Segoe UI Semibold", serif;
+    background: #D4D4D4;
+    position: absolute;
+    top: 37px;
+    /*left: -10px;*/
+    height: 25px;
+    width: 80px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    transition: background 200ms;
+}
+
+.addButton a {
+    cursor: default;
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.plus {
+    background: #A5A5A5;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    height: 20px;
+    width: 20px;
+    clip-path: polygon(0 40%, 40% 40%, 40% 0, 60% 0, 60% 40%, 100% 40%, 100% 61%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0 60%);
+}
+
+.addButton:hover {
+    background: #BDBDBD;
+}
+
+#add {
+    position: absolute;
+    background: #161616;
+    border: solid #D4D4D4;
+    /*top: 62px;*/
+    top: 100%;
+    /*left: -10px;*/
+    width: 300px;
+    height: 200px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.option {
+    font-family: "Segoe UI Semibold", serif;
+    color: #D4D4D4;
+}
+
+.option:hover {
+    color: #A5A5A5;
+}
+
+.input-option {
+    cursor: default;
+    resize: none;
+    position: relative;
+    /*overflow: hidden;*/
+    overflow-y: hidden;
+    word-wrap: break-word;
+    height: 0;
+    width: 90%;
+    left: calc(50% - (100% / 2 * 0.9) - 5px);
+    border-radius: 50px;
+    background: #D4D4D4;
+    border: #3f3f3f;
+    pointer-events: visibleFill;
+    transition: height 200ms;
+}
+
+.select-option {
+    cursor: default;
+    resize: none;
+    position: relative;
+    /*overflow: hidden;*/
+    overflow-y: hidden;
+    word-wrap: break-word;
+    height: 4px;
+    width: 90%;
+    left: calc(50% - (100% / 2 * 0.9) - 5px);
+    border-radius: 10px;
+    background: #D4D4D4;
+    border: #3f3f3f;
+    pointer-events: visibleFill;
+    transition: height 200ms;
+}
+
+.select-option:focus {
+    height: 35px;
+}
+
+.select-option:focus #add {
+    height: 500px;
+}
+
+.Submit {
+    cursor: default;
+    font-family: "Segoe UI Semibold", serif;
+    font-size: 25px;
+    color: #A5A5A5;
+    position: absolute;
+    bottom: 15px;
+    left: 45%;
+    background: #7be85d;
+    height: 40px;
+    width: 50%;
+    border-radius: 50px;
+    transition: background 400ms, color 400ms;
+}
+
+.Submit a {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+}
+
+.check-emoji {
+    background: #A5A5A5;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    height: 30px;
+    width: 30px;
+    clip-path: polygon(15% 35%, 50% 75%, 85% 50%, 100% 65%, 50% 100%, 0 50%);
+    transition: background 400ms;
+}
+
+.Submit:hover {
+    background: #57ad43;
+    color: #d7d7d7;
+}
+
+.Submit:hover .check-emoji{
+    background: #d7d7d7;
+}
+
+.input-option:focus {
+    height: 20px;
+}

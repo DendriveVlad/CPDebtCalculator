@@ -1,0 +1,239 @@
+.mainSpace {
+    top: 30px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#ExitFullScreen {
+    display: none;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+}
+
+.ResizeBlock1 {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    right: 0;
+    top: 30px;
+    cursor: e-resize;
+}
+
+.ResizeBlock2 {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    bottom: 0;
+    cursor: n-resize;
+}
+
+.ResizeBlock3 {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+}
+
+.launcherPage {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.lockSpace {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: rgba(22,22,22,1);
+    transition: background 200ms;
+}
+
+.launcherMenu {
+    position: relative;
+    top: 50%;
+    width: 30px;
+    height: 230px;
+    transform: translate(0, -55%);
+}
+
+.LMenuLine {
+    position: relative;
+    border-radius: 10px;
+    top: 50%;
+    left: 10px;
+    width: 4px;
+    height: 150px;
+    background: #b9b9b9;
+    transform: translate(0, -50%);
+    transition: left 400ms, background 300ms;
+}
+
+.LMenuChoice {
+    position: absolute;
+    transition: left 400ms;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(0, -50%);
+    left: -90px;
+}
+
+.LMenuChoice:before {
+    content: " ";
+    position: absolute;
+    /*border: solid #b9b9b9 2px;*/
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    top: 50%;
+    left: -50px;
+    width: 100px;
+    height: 300px;
+    transform: translate(0, -18%) rotate(20deg);
+    background: #161616;
+}
+
+.LMC2 {
+    content: "";
+    position: relative;
+    /*border: solid #b9b9b9 2px;*/
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    top: 50%;
+    left: -50px;
+    width: 100px;
+    height: 300px;
+    transform: translate(0, -85%) rotate(-20deg);
+    background: #161616;
+}
+
+.LMenuSelected {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    left: -14px;
+    transform: translate(0, -50%);
+    background: #b9b9b9;
+    width: 10px;
+    height: 40px;
+    transition: top 400ms;
+}
+
+.LMenuButtons {
+    position: fixed;
+    top: 45%;
+    left: -10px;
+    width: 60px;
+    height: 220px;
+    transform: translate(0, -50%);
+}
+
+.LMenuAddons {
+    /* border: solid #2247a6;
+    border-radius: 10px; */
+    /* background: #3277bb; */
+    background: rgba(255, 255, 255, 0);
+    color: #0a0a0a;
+    position: absolute;
+    top: -140px;
+    width: 80px;
+    height: 200px;
+    clip-path: polygon(0 0, 15% 0, 100% 100%, 0% 100%);
+    transition: background 200ms, color 200ms;
+}
+
+.LMenuAddons:hover {
+    color: #2247a6;
+    /*background: rgba(255, 255, 255, 0.5);*/
+}
+
+.LMenuPlay {
+    /* border: solid #1c6318;
+    border-radius: 10px;
+    background: #42bb32; */
+    background: rgba(255, 255, 255, 0);
+    position: absolute;
+    color: #0a0a0a;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: background 200ms, color 200ms;
+}
+
+.LMenuPlay:hover {
+    color: #1c6318;
+    /*background: rgba(255, 255, 255, 0.5);*/
+}
+
+.LMenuSettings {
+    /* border: solid #444444;
+    border-radius: 10px; */
+    background: rgba(255, 255, 255, 0);
+    transparent: 10%;
+    color: #0a0a0a;
+    position: absolute;
+    bottom: -140px;
+    width: 80px;
+    height: 200px;
+    clip-path: polygon(0 0, 100% 0, 25% 100%, 0% 100%);
+    transition: background 200ms, color 200ms;
+}
+
+.LMenuSettings:hover {
+    color: #CBCD07;
+    /*background: rgba(255, 255, 255, 0.5);*/
+}
+
+
+span {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    font-size: 80px;
+    font-family: "Segoe UI Semibold", serif;
+    transform: translate(-50%, -55%);
+}
+
+.Other {
+    top: 85%
+}
+
+.MMM {
+    top: -13%;
+    left: -5%;
+    transform: scale(0.7, 1);
+}
+
+.Results {
+    left: 50%;
+    font-size: 80px
+}
+
+.launcherMenu:hover .LMenuLine {
+    left: 80px;
+    background: transparent;
+}
+
+.launcherMenu:hover .LMenuChoice {
+    left: 10px;
+}
+
+/*//////////////////////////////////*/
+.debuger {
+    position: absolute;
+    right: 200px;
+    top: 40px;
+}

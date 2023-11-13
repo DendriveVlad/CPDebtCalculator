@@ -1,0 +1,49 @@
+#Totals {
+    cursor: default;
+    position: relative;
+    text-align: center;
+    /*background: #7be85d;*/
+    color: #9B9C7A;
+    font-family: "Segoe UI Semibold", serif;
+    font-size: 18px;
+    left: 85px;
+    width: calc(100% - 150px);
+    display: grid;
+    overflow: auto;
+    word-wrap: break-word;
+    grid-template-columns: 110px 80px 240px 110px;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.statsBlock {
+    transition: color 200ms;
+}
+
+.statsBlock:hover {
+    color: #d3d4ae;
+}
+
+.members {
+    position: absolute;
+    top: 55px;
+    left: 85px;
+    width: 60%;
+    height: calc(100% - 100px);
+}
+
+.member {
+    position: absolute;
+    width: 60%;
+    left: 15px;
+}
+
+.debt {
+    position: absolute;
+    width: calc(40% - 100px);
+    left: calc(60% + 100px);
+}
+
+.results {
+    top: 100px;
+}

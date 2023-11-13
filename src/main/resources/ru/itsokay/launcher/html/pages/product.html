@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="lil-window">
+        <label class="option" for="pname">Название:<textarea rows="1" maxlength="290" class="input-option" id="pname" onkeydown=" if (window.event.keyCode === 13) { confirm_product(); return false} " onkeyup="key_check(this)"></textarea></label>
+        <label class="option" for="INTpcost">Цена:<textarea maxlength="9" class="input-option" id="INTpcost" onkeydown=" if (window.event.keyCode === 13) { confirm_product(); return false} " onkeyup="key_check(this)"></textarea></label>
+        <label class="option" for="INTpnumber">Количество:<textarea maxlength="3" class="input-option" id="INTpnumber" onkeydown=" if (window.event.keyCode === 13) { confirm_product(); return false} " onkeyup="key_check(this)"></textarea></label>
+        <div class="Submit" onmouseup="confirm_product()">
+            <div class="check-emoji"></div>
+            <a>Submit</a>
+        </div>
+    </div>
+</body>
+</html>

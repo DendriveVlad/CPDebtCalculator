@@ -1,0 +1,47 @@
+.member-names {
+    position: absolute;
+    top: 15px;
+    left: 85px;
+    width: 30%;
+    height: calc(100% - 60px);
+}
+
+.member-name {
+    position: absolute;
+    width: 55.5%;
+    left: 15px;
+}
+
+.member-name:hover {
+    color: #d3d4ae;
+    block-size: auto;
+    overflow: visible;
+}
+
+.paids {
+    position: absolute;
+    top: 15px;
+    left: 30%;
+    width: 20%;
+    height: calc(100% - 60px);
+}
+
+.paid {
+    position: relative;
+    width: 21.5%;
+    left: calc(55px + 30%);
+}
+
+/*.numbers {*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    left: calc(85px + 70%);*/
+/*    width: calc(30% - 150px);*/
+/*    height: calc(100% - 60px);*/
+/*}*/
+
+.exceptions {
+    position: absolute;
+    width: 16%;
+    left: 50%;
+}

@@ -1,0 +1,83 @@
+.ServerFront {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 190px;
+    height: 80px;
+    transition: background 200ms;
+}
+
+
+.ServerFront:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.Server {
+    border-radius: 6px;
+    position: absolute;
+    left: 5px;
+    width: 190px;
+    height: 80px;
+}
+
+.ServerBack {
+    background: #161616;
+    border-radius: 6px;
+    width: 190px;
+    height: 80px;
+}
+
+.ServerImage {
+    position: absolute;
+    border-radius: 25px;
+    top: 50%;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    transform: translate(0, -50%);
+}
+
+.ServerNames {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 105px;
+    height: 50px;
+}
+
+.ServerBrand {
+    font-family: "Calibri Light", serif;
+    font-size: 18pt;
+    color: #e5b60f;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.ServerName {
+    font-family: "Calibri Light", serif;
+    font-size: 10pt;
+    color: #d0d0d0;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+#Server1 {
+    top: 5px;
+}
+
+#Server2 {
+    top: 95px;
+}
+
+#Server3 {
+    top: 185px;
+}
+
+#Server3 .ServerBrand {
+    font-size: 16pt;
+    color: #357129;
+}
