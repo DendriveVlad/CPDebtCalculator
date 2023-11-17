@@ -118,23 +118,23 @@ public class JavaConnector {
     public String getPartyData(String dataType) {
         StringBuilder result = new StringBuilder();
         switch (dataType) {
-            case "products":
+            case "products" -> {
 //                this.mainClass.party.getProducts();
                 for (String[] product : this.mainClass.party.getProducts()) {
                     result.append(product[0]).append("&").append(product[1]).append("&").append(product[2]).append("%");
                 }
-                break;
-            case "members":
+            }
+            case "members" -> {
                 for (String[] member : this.mainClass.party.getMembers()) {
                     result.append(member[0]).append("&").append(member[1]).append("&").append(member[2]).append("%");
                 }
-                break;
-            case "results":
+            }
+            case "results" -> {
                 for (Member member : this.mainClass.party.getJustMembers()) {
                     result.append(member.getMember()[0]).append("&").
                             append(this.mainClass.party.getSummaryDebtForMember(member)).append("%");
                 }
-                break;
+            }
         }
         return String.valueOf(result);
     }

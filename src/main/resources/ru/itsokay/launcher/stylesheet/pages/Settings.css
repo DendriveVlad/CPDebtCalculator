@@ -42,6 +42,6 @@
 
 .exceptions {
     position: absolute;
-    width: 16%;
+    width: calc(50% - 10px);
     left: 50%;
 }
