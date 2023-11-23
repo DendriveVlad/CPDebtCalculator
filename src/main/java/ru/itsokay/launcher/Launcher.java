@@ -12,6 +12,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import netscape.javascript.JSObject;
+import ru.itsokay.launcher.Database.Connector;
+import ru.itsokay.launcher.Database.Executor;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +21,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Launcher extends Application {
+    // Database
+    Executor base = new Executor();
+
     // Процессор
-    public PartyProcessor party = new PartyProcessor();
+    public PartyProcessor party = new PartyProcessor(base);
 
     // Позиция приложения на экране пользователя
     private double xOffset;
@@ -41,7 +46,6 @@ public class Launcher extends Application {
     boolean ctrl = false;
     boolean shift = false;
     boolean alt = false;
-    Checks checks;
 
     protected URL url = new File("src/main/resources/ru/itsokay/launcher/html/Main.html").toURI().toURL(); // Подключение к HTML файлу
 

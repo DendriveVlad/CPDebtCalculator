@@ -34,6 +34,7 @@ public class JavaConnector {
 
     // закрытие приложения
     public void close() {
+        mainClass.base.end();
         mainClass.stage.close();
     }  // Кнопка закрытия
 
@@ -142,37 +143,51 @@ public class JavaConnector {
     public String getMemberExcepts(int memberIndex) {
         if (memberIndex < 0) memberIndex = this.mainClass.party.getJustMembers().size() - 1;
         String result = "";
-        for (Product p : this.mainClass.party.getJustMembers().get(memberIndex).getExcepts()) result += p.getProduct()[0] + ", ";
+        for (Product p : this.mainClass.party.getJustMembers().get(memberIndex).getExcepts())
+            result += p.getProduct()[0] + ", ";
         if (result.isEmpty()) return ".";
         return result.substring(0, result.length() - 2) + ".";
     }
 
     public String isProductSelectedByMember(int memberIndex, int productIndex) {
-        if (this.mainClass.party.getJustMembers().get(memberIndex).getExcepts().contains(this.mainClass.party.getJustProducts().get(productIndex))) return "selected";
+        if (this.mainClass.party.getJustMembers().get(memberIndex).getExcepts().contains(this.mainClass.party.getJustProducts().get(productIndex)))
+            return "selected";
         else return "";
     }
 
     public void addProduct(String name, int cost, int number) {
+        this.mainClass.base.insert("products",
+                name + "&" + cost + "&" + number);
         this.mainClass.party.addProduct(new Product(name, cost, number));
     }
 
     public void editProduct(int index, String name, int cost, int number) {
+        this.mainClass.base.update("products",
+                name + "&" + cost + "&" + number,
+                index);
         this.mainClass.party.editProduct(index, name, cost, number);
     }
 
     public void removeProduct(int index) {
+        this.mainClass.base.delete("products", index);
         this.mainClass.party.removeProduct(index);
     }
 
     public void addMember(String name, int paid, String excepts) {
+        this.mainClass.base.insert("members",
+                name + "&" + paid + "&" + excepts);
         this.mainClass.party.addMember(new Member(name, paid, excepts, this.mainClass.party.getJustProducts()));
     }
 
     public void editMember(int index, String name, int paid, String excepts) {
+        this.mainClass.base.update("members",
+                name + "&" + paid + "&" + excepts,
+                index);
         this.mainClass.party.editMember(index, name, paid, excepts);
     }
 
     public void removeMember(int index) {
+        this.mainClass.base.delete("members", index);
         this.mainClass.party.removeMember(index);
     }
 

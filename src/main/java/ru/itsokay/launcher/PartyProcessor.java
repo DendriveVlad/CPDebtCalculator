@@ -1,5 +1,6 @@
 package ru.itsokay.launcher;
 
+import ru.itsokay.launcher.Database.Executor;
 import ru.itsokay.launcher.Party.Member;
 import ru.itsokay.launcher.Party.Product;
 
@@ -9,6 +10,31 @@ import java.util.List;
 public class PartyProcessor {
     private List<Product> products = new ArrayList<>();
     private List<Member> members = new ArrayList<>();
+
+    public PartyProcessor(Executor base) {
+        String products = base.select("products");
+        String members = base.select("members");
+        String[] chunk;
+        for (String product : products.split("%")) {
+            if (product.isEmpty()) continue;
+            chunk = product.split("&");
+            this.products.add(new Product(
+                    chunk[0],
+                    Integer.parseInt(chunk[1]),
+                    Integer.parseInt(chunk[2])
+            ));
+        }
+        for (String member : members.split("%")) {
+            if (member.isEmpty()) continue;
+            chunk = member.split("&");
+            this.members.add(new Member(
+                    chunk[0],
+                    Integer.parseInt(chunk[1]),
+                    chunk[2],
+                    getJustProducts()
+            ));
+        }
+    }
 
     public ArrayList<String[]> getProducts() {
         ArrayList<String[]> result = new ArrayList<>();
