@@ -102,6 +102,7 @@ public class JavaConnector {
     // Подгрузка (Чтение) HTML-файла и отправка его в жс
     public String loadPage(String page) throws FileNotFoundException {
         StringBuilder html = new StringBuilder();
+        if (this.mainClass.party.isEmpty()) page = "FindData";
         FileReader fr = new FileReader("src/main/resources/ru/itsokay/launcher/html/pages/" + page + ".html");
         try {
             BufferedReader br = new BufferedReader(fr);

@@ -1,0 +1,45 @@
+#StopEverything {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    background: #161616;
+}
+
+.WarningTitle {
+    color: #BDBDBD;
+    font-family: "Segoe UI Semibold", serif;
+    text-align: center;
+    position: relative;
+    top: 30%;
+}
+
+.Use {
+    background: #2247a6;
+    color: #BDBDBD;
+    font-family: "Segoe UI Semibold", serif;
+    text-align: center;
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    top: 50%;
+    left: calc(50% - 150px);
+}
+
+.Use a {
+    /* TODO: Доделать кнопки, привязать функционал (логику) и выронить их нормально, а то как бухие уехали куда-то*/
+}
+
+.Clear {
+    background: #e23b3a;
+    color: #BDBDBD;
+    font-family: "Segoe UI Semibold", serif;
+    text-align: center;
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    top: 50%;
+    left: calc(50% + 50px);
+}

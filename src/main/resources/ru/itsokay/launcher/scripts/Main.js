@@ -37,7 +37,7 @@ document.addEventListener("keydown", function (event) {
 
 let serversCount = 3 // Количество спаршеных серверов (пока что здесь просто число, потом будет значение браться с сайта)
 
-let launcherPage = "Play"; // Addons / Play / Settings
+let launcherPage = "Play"; // Addons / Play / Settings / RestoreData
 function getPage() {
     return launcherPage;
 }
@@ -98,6 +98,12 @@ function loadPage() {
     lockSpace.style.background = "rgba(22,22,22,1)";
     setTimeout(function () {
         var page_content = javaConnector.loadPage(launcherPage);
+        if (page_content.includes("FindData")) {
+            document.getElementById("StopEverything").style.top = "30px";
+            document.getElementById("StopEverything").innerHTML += page_content;
+            launcherPage = "RestoreData"
+            return;
+        }
         document.getElementById("launcherPage").innerHTML = "";
         document.getElementById("launcherPage").innerHTML += page_content;
     }, 200);
@@ -118,6 +124,9 @@ function loadPage() {
         case "Settings":
             data_type = "members";
             document.getElementById("LMenuSelected").style.top = "125%";
+            break;
+        case "RestoreData":
+            data_type = "less";
             break;
     }
     setTimeout(function () {

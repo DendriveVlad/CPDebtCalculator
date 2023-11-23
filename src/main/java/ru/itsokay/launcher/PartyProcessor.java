@@ -10,6 +10,7 @@ import java.util.List;
 public class PartyProcessor {
     private List<Product> products = new ArrayList<>();
     private List<Member> members = new ArrayList<>();
+    private boolean isEmpty;
 
     public PartyProcessor(Executor base) {
         String products = base.select("products");
@@ -34,6 +35,16 @@ public class PartyProcessor {
                     getJustProducts()
             ));
         }
+        if (!(this.members.isEmpty() && this.products.isEmpty())) this.isEmpty = true;
+
+    }
+
+    public boolean isEmpty() {
+        if (this.isEmpty) {
+            this.isEmpty = false;
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String[]> getProducts() {
@@ -99,8 +110,9 @@ public class PartyProcessor {
 
     public int getSummaryDebtForMember(Member member) {
         int result = 0;
-        for (Product p : this.products) if (!member.getExcepts().contains(p))
-            result += p.getCostForEach(this.members.size());
+        for (Product p : this.products)
+            if (!member.getExcepts().contains(p))
+                result += p.getCostForEach(this.members.size());
 
         return result - member.getPaid();
     }
