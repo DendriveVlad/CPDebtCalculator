@@ -1,4 +1,5 @@
 #StopEverything {
+    cursor: default;
     position: absolute;
     top: 100%;
     width: 100%;
@@ -6,7 +7,7 @@
     background: #161616;
 }
 
-.WarningTitle {
+#WarningTitle {
     color: #BDBDBD;
     font-family: "Segoe UI Semibold", serif;
     text-align: center;
@@ -14,8 +15,20 @@
     top: 30%;
 }
 
-.Use {
-    background: #2247a6;
+#Confirmation {
+    color: transparent;
+    font-family: "Segoe UI Semibold", serif;
+    font-size: 10px;
+    text-align: center;
+    width: 150px;
+    position: absolute;
+    top: 60%;
+    left: calc(50% + 54px);
+    transition: color 300ms;
+}
+
+#Use {
+    border: 3px solid #3f67d7;
     color: #BDBDBD;
     font-family: "Segoe UI Semibold", serif;
     text-align: center;
@@ -24,15 +37,27 @@
     height: 50px;
     border-radius: 20px;
     top: 50%;
-    left: calc(50% - 150px);
+    left: calc(50% - 186px);
+    transition: border-color 400ms, color 400ms;
 }
 
-.Use a {
-    /* TODO: Доделать кнопки, привязать функционал (логику) и выронить их нормально, а то как бухие уехали куда-то*/
+#Use:hover {
+    border-color: #00D4FFFF;
+    color: #00D4FFFF;
 }
 
-.Clear {
-    background: #e23b3a;
+#Use a {
+    position: relative;
+    top: 25%;
+}
+
+#Clear a {
+    position: relative;
+    top: 25%;
+}
+
+#Clear {
+    border: 3px solid #be1514;
     color: #BDBDBD;
     font-family: "Segoe UI Semibold", serif;
     text-align: center;
@@ -41,5 +66,11 @@
     height: 50px;
     border-radius: 20px;
     top: 50%;
-    left: calc(50% + 50px);
+    left: calc(50% + 66px);
+    transition: border-color 400ms, color 400ms;
+}
+
+#Clear:hover {
+    border-color: #fd605f;
+    color: #fd605f;
 }

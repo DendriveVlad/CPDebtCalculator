@@ -12,7 +12,8 @@ public class Connector {
         String FileFolder = null;
         String os = System.getProperty("os.name").toUpperCase();
         if (os.contains("WIN")) FileFolder = System.getenv("APPDATA") + "\\PartyCalc\\";
-        if (os.contains("MAC")) FileFolder = System.getProperty("user.home") + "/Library/\"Application Support\"/PartyCalc/";
+        if (os.contains("MAC"))
+            FileFolder = System.getProperty("user.home") + "/Library/\"Application Support\"/PartyCalc/";
         if (os.contains("NUX")) FileFolder = System.getProperty("user.dir") + ".PartyCalc.";
 
         if (FileFolder == null) return;
@@ -40,15 +41,12 @@ public class Connector {
     public String execute(String request) throws SQLException {
         StringBuilder result = new StringBuilder();
         this.st.execute(request);
-        try {
-            this.rs = this.st.getResultSet();
-            while (this.rs.next()) {
-                result.append(this.rs.getString("rawdata")).append("%");
-            }
-            return result.toString();
-        } catch (NullPointerException e) {
-            return "There is nothing to return";
+        this.rs = this.st.getResultSet();
+        if (this.rs == null) return "There is nothing to return";
+        while (this.rs.next()) {
+            result.append(this.rs.getString("rawdata")).append("%");
         }
+        return result.toString();
     }
 
     public void disconnect() {

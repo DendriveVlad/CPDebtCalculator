@@ -199,4 +199,9 @@ public class JavaConnector {
                 this.mainClass.party.getSummaryDebt();
         return result;
     }
+
+    public void killData() {
+        this.mainClass.party.clear();
+        this.mainClass.base.clear();
+    }
 }

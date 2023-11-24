@@ -36,6 +36,12 @@ public class PartyProcessor {
             ));
         }
         if (!(this.members.isEmpty() && this.products.isEmpty())) this.isEmpty = true;
+    }
+
+    public void clear() {
+        this.products.clear();
+        this.members.clear();
+
 
     }
 

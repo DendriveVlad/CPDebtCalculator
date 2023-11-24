@@ -41,6 +41,15 @@ public class Executor {
         }
     }
 
+    public void clear() {
+        try {
+            this.conn.execute("DELETE FROM products");
+            this.conn.execute("DELETE FROM members");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public void end() {
         this.conn.disconnect();
     }

@@ -190,3 +190,20 @@ function remove_object(obj) {
         }
     }
 }
+
+function data_click(type) {
+    switch (type) {
+        case "kill":
+            javaConnector.killData();
+        case "save": // Use
+            document.getElementById("StopEverything").style.top = "100%";
+            document.getElementById("StopEverything").innerHTML = "";
+            changePage("Play");
+            break;
+        case "del": // Clear first click
+            document.getElementById("Confirmation").style.color = "#BDBDBD";
+            document.getElementById("Clear").onclick = function onclick(event) { data_click("kill") };
+            break;
+    }
+
+}
