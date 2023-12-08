@@ -12,7 +12,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import netscape.javascript.JSObject;
-import ru.itsokay.launcher.Database.Connector;
 import ru.itsokay.launcher.Database.Executor;
 
 import java.io.File;

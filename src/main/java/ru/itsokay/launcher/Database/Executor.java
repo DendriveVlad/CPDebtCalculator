@@ -1,56 +1,111 @@
 package ru.itsokay.launcher.Database;
 
-import java.sql.SQLException;
+import jakarta.persistence.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import ru.itsokay.launcher.Database.Tables.Members;
+import ru.itsokay.launcher.Database.Tables.Products;
+
+import java.util.List;
 
 public class Executor {
-    private Connector conn;
+    private Connector connection;
+
     public Executor() {
-        this.conn = new Connector();
+        this.connection = new Connector();
     }
 
     public void insert(String table, String data) {
-        try {
-            this.conn.execute("INSERT INTO " + table + " VALUES('" + data + "')");
-        } catch (SQLException e) {
-            System.out.println(e);
+        Transaction trans = connection.getsSession().beginTransaction();
+        switch (table.toLowerCase()) {
+            case "products" -> {
+                Products p = new Products();
+                p.setRawdata(data);
+                connection.getsSession().persist(p);
+            }
+            case "members" -> {
+                Members m = new Members();
+                m.setRawdata(data);
+                connection.getsSession().persist(m);
+            }
         }
+        trans.commit();
     }
 
-    public void update(String table, String data, int index) {
-        try {
-            this.conn.execute("UPDATE " + table + " SET rawdata = '" + data + "' WHERE rowid = " + (index + 1));
-        } catch (SQLException e) {
-            System.out.println(e);
+    public void update(String table, String data, int id) {
+        Transaction trans = connection.getsSession().beginTransaction();
+
+        Query query = connection.getsSession().createQuery("FROM " + table);
+        switch (table.toLowerCase()) {
+            case "products" -> {
+                List<Products> rs = query.getResultList();
+                Products pf = rs.get(id);
+                pf.setRawdata(data);
+                connection.getsSession().merge(pf);
+            } case "members" -> {
+                List<Members> rs = query.getResultList();
+                Members pf = rs.get(id);
+                pf.setRawdata(data);
+                connection.getsSession().merge(pf);
+            }
         }
+
+        trans.commit();
     }
 
-    public void delete(String table, int index) {
-        try {
-            this.conn.execute("DELETE FROM " + table + " WHERE rowid = " + (index + 1));
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
+    public void delete(String table, int id) {
+        Transaction trans = connection.getsSession().beginTransaction();
 
-    public String select(String table) {
-        try {
-            return this.conn.execute("SELECT rawdata FROM " + table);
-        } catch (SQLException e) {
-            System.out.println(e);
-            return "";
+        Query query = connection.getsSession().createQuery("FROM " + table);
+        switch (table.toLowerCase()) {
+            case "products" -> {
+                List<Products> rs = query.getResultList();
+                connection.getsSession().remove(rs.get(id));
+            } case "members" -> {
+                List<Members> rs = query.getResultList();
+                connection.getsSession().remove(rs.get(id));
+            }
         }
+
+        trans.commit();
     }
 
     public void clear() {
-        try {
-            this.conn.execute("DELETE FROM products");
-            this.conn.execute("DELETE FROM members");
-        } catch (SQLException e) {
-            System.out.println(e);
+        Transaction trans = connection.getsSession().beginTransaction();
+
+        Query query = connection.getsSession().createQuery("DELETE FROM Products");
+        query.executeUpdate();
+        query = connection.getsSession().createQuery("DELETE FROM Members");
+        query.executeUpdate();
+
+        trans.commit();
+    }
+
+    public String select(String table) {
+        Query query = connection.getsSession().createQuery("FROM " + table);
+        StringBuilder result = new StringBuilder();
+        switch (table.toLowerCase()) {
+            case "products" -> {
+                List<Products> rs = query.getResultList();
+                for (Products p : rs) {
+                    result.append(p.getRawdata()).append("%");
+                }
+            } case "members" -> {
+                List<Members> rs = query.getResultList();
+                for (Members p : rs) {
+                    result.append(p.getRawdata()).append("%");
+                }
+            }
         }
+        return result.toString();
     }
 
     public void end() {
-        this.conn.disconnect();
+        connection.getsSession().close();
+    }
+
+    public static void main(String[] args) {
+        Executor x = new Executor();
+        x.select("Products");
     }
 }

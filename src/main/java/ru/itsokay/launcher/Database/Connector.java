@@ -1,12 +1,19 @@
 package ru.itsokay.launcher.Database;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import ru.itsokay.launcher.Database.Tables.Members;
+import ru.itsokay.launcher.Database.Tables.Products;
+
 import java.io.File;
-import java.sql.*;
 
 public class Connector {
-    private Connection connection;
-    private Statement st;
-    private ResultSet rs;
+
+    private static SessionFactory sFactory;
+    private Session session;
 
     public Connector() {
         String FileFolder = null;
@@ -20,42 +27,23 @@ public class Connector {
         File dir = new File(FileFolder);
         if (!dir.exists()) if (!dir.mkdir()) return;
 
-        try {
-            Class.forName("org.sqlite.JDBC");
+        Configuration cfg = new Configuration()
+                .setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect")
+                .setProperty("hibernate.connection.url", "jdbc:sqlite:" + FileFolder + "base.db")
+                .setProperty("hibernate.connection.autocommit", "true")
+                .setProperty("hibernate.show_sql", "false")
+                .setProperty("hibernate.hbm2ddl.auto", "update")
+                .setProperty("hibernate.transaction.jta.platform", "org.hibernate.service.jta.platform.internal.SunOneJtaPlatform")
+                .addAnnotatedClass(Products.class)
+                .addAnnotatedClass(Members.class);
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
 
-            this.connection = DriverManager.getConnection("jdbc:sqlite:" + FileFolder + "base.db");
-            this.st = this.connection.createStatement();
+        sFactory = cfg.buildSessionFactory(serviceRegistry);
 
-            String[] types = {"TABLE"};
-            this.rs = this.connection.getMetaData().getTables(null, null, "%", types);
-
-            if (!this.rs.next()) {
-                this.st.execute("CREATE TABLE products (rawdata TEXT)");
-                this.st.execute("CREATE TABLE members (rawdata TEXT)");
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
-        }
+        session = sFactory.openSession();
     }
 
-    public String execute(String request) throws SQLException {
-        StringBuilder result = new StringBuilder();
-        this.st.execute(request);
-        this.rs = this.st.getResultSet();
-        if (this.rs == null) return "There is nothing to return";
-        while (this.rs.next()) {
-            result.append(this.rs.getString("rawdata")).append("%");
-        }
-        return result.toString();
-    }
-
-    public void disconnect() {
-        if (this.connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public Session getsSession() {
+        return this.session;
     }
 }

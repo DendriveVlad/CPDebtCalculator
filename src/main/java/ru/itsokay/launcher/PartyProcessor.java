@@ -13,8 +13,8 @@ public class PartyProcessor {
     private boolean isEmpty;
 
     public PartyProcessor(Executor base) {
-        String products = base.select("products");
-        String members = base.select("members");
+        String products = base.select("Products");
+        String members = base.select("Members");
         String[] chunk;
         for (String product : products.split("%")) {
             if (product.isEmpty()) continue;
@@ -28,10 +28,17 @@ public class PartyProcessor {
         for (String member : members.split("%")) {
             if (member.isEmpty()) continue;
             chunk = member.split("&");
+            String name = chunk[0];
+            chunk[0] = "";
+            int paid = Integer.parseInt(chunk[1]);
+            chunk[1] = "";
+            StringBuilder excepts = new StringBuilder();
+            for (String e : chunk) if (!e.isEmpty()) excepts.append(e).append("&");
+            excepts.deleteCharAt(excepts.length() - 1);
             this.members.add(new Member(
-                    chunk[0],
-                    Integer.parseInt(chunk[1]),
-                    chunk[2],
+                    name,
+                    paid,
+                    excepts.toString(),
                     getJustProducts()
             ));
         }

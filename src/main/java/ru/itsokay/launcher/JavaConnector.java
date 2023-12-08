@@ -119,7 +119,7 @@ public class JavaConnector {
 
     public String getPartyData(String dataType) {
         StringBuilder result = new StringBuilder();
-        switch (dataType) {
+        switch (dataType.toLowerCase()) {
             case "products" -> {
 //                this.mainClass.party.getProducts();
                 for (String[] product : this.mainClass.party.getProducts()) {
@@ -157,38 +157,38 @@ public class JavaConnector {
     }
 
     public void addProduct(String name, int cost, int number) {
-        this.mainClass.base.insert("products",
+        this.mainClass.base.insert("Products",
                 name + "&" + cost + "&" + number);
         this.mainClass.party.addProduct(new Product(name, cost, number));
     }
 
     public void editProduct(int index, String name, int cost, int number) {
-        this.mainClass.base.update("products",
+        this.mainClass.base.update("Products",
                 name + "&" + cost + "&" + number,
                 index);
         this.mainClass.party.editProduct(index, name, cost, number);
     }
 
     public void removeProduct(int index) {
-        this.mainClass.base.delete("products", index);
+        this.mainClass.base.delete("Products", index);
         this.mainClass.party.removeProduct(index);
     }
 
     public void addMember(String name, int paid, String excepts) {
-        this.mainClass.base.insert("members",
+        this.mainClass.base.insert("Members",
                 name + "&" + paid + "&" + excepts);
         this.mainClass.party.addMember(new Member(name, paid, excepts, this.mainClass.party.getJustProducts()));
     }
 
     public void editMember(int index, String name, int paid, String excepts) {
-        this.mainClass.base.update("members",
+        this.mainClass.base.update("Members",
                 name + "&" + paid + "&" + excepts,
                 index);
         this.mainClass.party.editMember(index, name, paid, excepts);
     }
 
     public void removeMember(int index) {
-        this.mainClass.base.delete("members", index);
+        this.mainClass.base.delete("Members", index);
         this.mainClass.party.removeMember(index);
     }
 
